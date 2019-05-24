@@ -18,9 +18,14 @@ namespace CSharpIntroPlayTime
             {
                 GroceryList();
             }
+            else if (response == "B" || response == "b"){
+                GuessingGame();
+
+            }
             else  // change this to only call GuessingGame() when the user enters option "B"
             {
-                GuessingGame();
+                Console.WriteLine("Invalid option please choose A or B");
+                Main(null);
             }
 
             // If the user didn't input an "A" or "B" print a message 
@@ -38,17 +43,20 @@ namespace CSharpIntroPlayTime
             while (!string.IsNullOrWhiteSpace(input))
             {
                 groceries.Add(input);
-
+                Console.WriteLine("Input next item peasant");
+                
+                input = Console.ReadLine();
                 // Ask for the input again
-            }
-
+            };
+        {
             Console.WriteLine();
             Console.WriteLine("Your grocery list:");
             foreach (string grocery in groceries)
             {
                 // Write the grocery to the console
+                Console.WriteLine(grocery);
             }
-        }
+        }}
 
         static void GuessingGame()
         {
@@ -60,19 +68,25 @@ namespace CSharpIntroPlayTime
             {
                 Console.Write("Guess a number between 1 and 20: ");
                 int guess = int.Parse(Console.ReadLine());
-
+                if(guess > answer){
                 // Add a conditional to determine if the user's guess is higher than the answer
                 //  If so, print "Too High!" to the console
-
+                    Console.WriteLine("Too High!");
+                }
                 // Add a conditional to determine if the user's guess is lower than the answer
                 //  If so, print "Too Low!" to the console
+                else if(guess < answer){
+                    Console.WriteLine("Too Low!");
+                }
+            else{
 
                 // When the user guesses correctly, tell them and return from the method
                 Console.WriteLine("You got it!");
                 return;
-            }
+            }}
 
-            Console.WriteLine("Better luck next time...");
+            Console.WriteLine($"Better luck next time... the answer was {answer}");
+            
         }
     }
 }
